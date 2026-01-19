@@ -1,0 +1,151 @@
+%%%%%%%%%%%%%%%
+% This CV example/template is based on my own
+% CV which I (lamely attempted) to clean up, so that
+% it's less of an eyesore and easier for others to use.
+%
+% LianTze Lim (liantze@gmail.com)
+% 23 Oct, 2022
+%
+% \documentclass[a4paper,skipsamekey,11pt,german]{curve}
+\documentclass[a4paper,skipsamekey,11pt,english]{curve}
+
+% Uncomment to enable Chinese; needs XeLaTeX
+% \usepackage{ctex}
+
+
+% Default biblatex style used for the publication list is APA6. If you wish to use a different style or pass other options to biblatex you can change them here. 
+\PassOptionsToPackage{style=ieee,sorting=ydnt,uniquename=init,defernumbers=true}{biblatex}
+
+% Most commands and style definitions are in settings.sty.
+\usepackage{cv_like}
+
+
+% Change the fonts if you want
+\ifxetexorluatex % If you're using XeLaTeX or LuaLaTeX
+  \usepackage{fontspec} 
+  %% You can use \setmainfont etc; I'm just using these font packages here because they provide OpenType fonts for use by XeLaTeX/LuaLaTeX anyway
+  \usepackage[p,osf,swashQ]{cochineal}
+  \usepackage[medium,bold]{cabin}
+  \usepackage[varqu,varl,scale=0.9]{zi4}
+\else % If you're using pdfLaTeX or latex
+  \usepackage[T1]{fontenc}
+  \usepackage[p,osf,swashQ]{cochineal}
+  \usepackage{cabin}
+  \usepackage[varqu,varl,scale=0.9]{zi4}
+\fi
+
+% Change the page margins if you want
+% \geometry{left=1cm,right=1cm,top=1.5cm,bottom=1.5cm}
+
+% Change the colours if you want
+% \definecolor{SwishLineColour}{HTML}{00FFFF}
+% \definecolor{MarkerColour}{HTML}{0000CC}
+
+% Change the item prefix marker if you want
+% \prefixmarker{$\diamond$}
+
+%% Photo is only shown if "fullonly" is included
+% \includecomment{fullonly}
+ \excludecomment{fullonly}
+
+
+ \newcounter{preprintpubs}
+\newcounter{confpubs}
+\newcounter{confpubsscopus}
+\newcounter{confpubsprscopus}
+\newcounter{journalpubsprscopus}
+
+% Save original \item
+\let\olditem\item
+
+% Conference items
+\newcommand{\preprintitem}{%
+  \stepcounter{preprintpubs}%
+  \olditem
+}
+
+% Journal items
+\newcommand{\confitem}{%
+  \stepcounter{confpubs}%
+  \olditem
+}
+
+\newcommand{\confitemsc}{%
+  \stepcounter{confpubsscopus}%
+  \olditem
+}
+
+\newcommand{\confitemprsc}{%
+  \stepcounter{confpubsprscopus}%
+  \olditem
+}
+
+\newcommand{\journalitemprsc}{%
+  \stepcounter{journalpubsprscopus}%
+  \olditem
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\leftheader{%
+  {\LARGE\bfseries\sffamily \iflanguage{german}{Verzeichnis der Veröffentlichungen von Dr. Georgii Oblapenko}{List of publications of Dr. Georgii Oblapenko}}
+}
+
+\rightheader{~}
+% \begin{fullonly}
+% \photo[r]{photo}
+% \photoscale{0.13}
+% \end{fullonly}
+
+\title{Publications list}
+
+\begin{document}
+\makeheaders[c]
+
+\input{peer_review_journals}
+\input{peer_review_conferences.tex}
+% \newpage
+\input{ohne_peer_review}
+
+
+\newwrite\pubcountfile
+\immediate\openout\pubcountfile=pubcounts.tex
+\immediate\write\pubcountfile{\string\newcommand{\string\NumPreprintPubs}{\arabic{preprintpubs}}}
+\immediate\write\pubcountfile{\string\newcommand{\string\NumConfPubs}{\arabic{confpubs}}}
+\immediate\write\pubcountfile{\string\newcommand{\string\NumConfPubsScopus}{\arabic{confpubsscopus}}}
+\immediate\write\pubcountfile{\string\newcommand{\string\NumConfPubsReviewedScopus}{\arabic{confpubsprscopus}}}
+\immediate\write\pubcountfile{\string\newcommand{\string\NumJournPubsReviewedScopus}{\arabic{journalpubsprscopus}}}
+% \immediate\write\@pubcountfile{\string\newcommand{\string\NumPreprintPubs}{\arabic{preprintpubs}}%
+% }
+% \immediate\write\@pubcountfile{\string\newcommand{\string\NumConfPubs}{\arabic{confpubs}}%
+% }
+% \immediate\write\@pubcountfile{\string\newcommand{\string\NumConfPubsScopus}{\arabic{confpubsscopus}}%
+% }
+% \immediate\write\@pubcountfile{%
+%   \string\newcommand{\string\NumConfPubsReviewedScopus}{\arabic{confpubsprscopus}}%
+% }
+% \immediate\write\@pubcountfile{%
+%   \string\newcommand{\string\NumJournPubsReviewedScopus}{\arabic{journalpubsprscopus}}%
+% }
+
+\immediate\closeout\pubcountfile
+
+% \makeatletter
+% \immediate\write\@auxout{%
+%   \string\newcommand{\string\NumPreprintPubs}{\arabic{preprintpubs}}%
+% }
+% \immediate\write\@auxout{%
+%   \string\newcommand{\string\NumConfPubs}{\arabic{confpubs}}%
+% }
+% \immediate\write\@auxout{%
+%   \string\newcommand{\string\NumConfPubsScopus}{\arabic{confpubsscopus}}%
+% }
+% \immediate\write\@auxout{%
+%   \string\newcommand{\string\NumConfPubsReviewedScopus}{\arabic{confpubsprscopus}}%
+% }
+% \immediate\write\@auxout{%
+%   \string\newcommand{\string\NumJournPubsReviewedScopus}{\arabic{journalpubsprscopus}}%
+% }
+% \makeatother
+
+\end{document}
