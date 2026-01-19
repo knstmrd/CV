@@ -112,6 +112,26 @@
 \begin{document}
 \makeheaders[c]
 
+\input{pubcounts.tex}
+\newcommand{\NumReviewedScopusTotal}{%
+  \number\numexpr
+    \NumJournPubsReviewedScopus
+    +
+    \NumConfPubsReviewedScopus
+  \relax
+}
+
+\newcommand{\NumNotReviewedTotal}{%
+  \number\numexpr
+    \NumConfPubsScopus
+    +
+    \NumConfPubs
+    +
+    \NumPreprintPubs
+  \relax
+}
+
+
 % \makerubric{skills}
 \makerubric{employment}
 \makerubric{education}

@@ -1,32 +1,16 @@
-%% Sometimes when a section can't be nicely modelled with the \entry[]... mechanism; hack our own
 \makerubrichead{Publications}
-% \begin{rubric}{Ver\"{o}ffentlichungen}
-The full list of publications consists of \textbf{23} peer-reviewed publications in SCOPUS/Web of Science-indexed journals and conference proceedings, as well as  \textbf{16} publications without peer review (conference proceedings, preprints).
-\\[1\baselineskip]
-Statistics according to \textbf{SCOPUS} (March 2025):
-\begin{itemize}
-    \item Number of publications: 27
-    \item h-index: 10
-    \item Citations: 323
-\end{itemize}
-\\[0.5\baselineskip] 
-Statistics according to \textbf{Google Scholar} (March 2025):
-\begin{itemize}
-    \item Number of publications: 53
-    \item h-index: 13
-    \item Citations: 540
-\end{itemize}
-% Full list of publications consists of \textbf{23} peer-reviewed publications in SCOPUS/Web of Science-indexed  journals and conference proceedings, and \textbf{12} non-peer-reviewed publications (conference proceedings, preprints).
-%% Assuming you've already given \addbibresource{own-bib.bib} in the main doc. Right? Right???
-% \nocite{*}
+The full list of publications consists of \textbf{\NumReviewedScopusTotal} (including accepted papers) peer-reviewed publications in SCOPUS/Web of Science-indexed journals and conference proceedings, as well as \textbf{\NumNotReviewedTotal} publications without peer review (conference proceedings, preprints).
+\\[0.5\baselineskip]
+Publication statistics (as of December 2025):
+\\[0.5\baselineskip]
+\begin{center}
+\begin{tabular}{ ccc } 
 
-% %% If you just want everything in one list
-% % \printbibliography[heading={none}]
+  & \textbf{SCOPUS} & \textbf{Google Scholar} \\ 
 
-% \printbibliography[heading={subbibliography},title={Ver\"{o}ffentlichungen in Fachzeitschriften},type=article]
+ Number of publications & 29  & 58 \\ 
+ h-index                & 11  & 13 \\ 
+ Citations              & 359 & 587 
+\end{tabular}
+\end{center}
 
-% \printbibliography[heading={subbibliography},title={Konferenzberichte},type=inproceedings]
-
-% \printbibliography[heading={subbibliography},title={Books and Chapters},filter={booksandchapters}]
-
-% \end{rubric}
