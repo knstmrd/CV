@@ -98,15 +98,18 @@
 \keyalignment{r}
 \rubricalignment{l}
 \renewcommand{\arraystretch}{1.25}
+%% 2\tabcolsep sits between the key (date) column and the prefix marker column
+%% in curve.cls's rubric longtable; default 6pt leaves too wide a gutter.
+\setlength{\tabcolsep}{2pt}
 \urlstyle{tt}
 
 \newcommand{\prefixmarker}[1]{\def\@prefixmarker{#1}}
 \def\@prefixmarker{\relscale{.9}\faBookmark}
 
 \prefix{%
-  \hspace*{-1ex}
+  \hspace*{-1ex}%
   \color{MarkerColour!80!black}\@prefixmarker%
-  \hspace*{1ex}%
+  \hspace*{0.5ex}%
 }
 
 \newcommand{\makerubrichead}[1]{\vskip\baselineskip\@@rubrichead{#1}}
