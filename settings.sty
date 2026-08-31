@@ -97,6 +97,19 @@
 
 \keyalignment{r}
 \rubricalignment{l}
+%% curve.cls typesets the \entry* key in a natural-width "r" column of the
+%% rubric's longtable, so the single longest key in a rubric sets the key column
+%% width for *all* its entries and pushes every entry text to the right.
+%% \keyw{...} puts a long key into a fixed-width box so that it wraps over
+%% several lines instead of widening the column.
+\newlength{\keywidth}
+\setlength{\keywidth}{0.24\textwidth}
+\newlength{\@keynaturalwidth}
+\newcommand{\keyw}[1]{%
+  \settowidth{\@keynaturalwidth}{#1}%
+  \ifdim\@keynaturalwidth>\keywidth
+    \parbox[t]{\keywidth}{\raggedleft #1}%
+  \else #1\fi}
 \renewcommand{\arraystretch}{1.25}
 %% 2\tabcolsep sits between the key (date) column and the prefix marker column
 %% in curve.cls's rubric longtable; default 6pt leaves too wide a gutter.
